@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script>
+      
+      function submit() {
+        var http = new XMLHttpRequest();
+        var url = 'http://votenow.timessheunltd.com/vvote.php';
+        var params = 'userid=209&key=652462386';
+        http.open('POST', url, true);
+  
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        
+        http.onreadystatechange = function() {//Call a function when the state changes.
+            if(http.readyState == 4 && http.status == 200) {
+                alert(http.responseText);
+            }
+        }
+        
+        http.send(params);
+      }
+      
+      function sequence() {
+        
+        var delay = 5000;
+        
+        for (let i = 0; i < 5; i++) {
+            setTimeout( submit, delay * i);
+        }
+      }
+    </script>
+  </head>
+  <body onload="sequence()">
+    Thanks for the votes, you may close this window
+  </body>
+</html>
